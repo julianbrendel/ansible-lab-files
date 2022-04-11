@@ -1,0 +1,13 @@
+---
+- name: package test
+  hosts: ubuntu2
+  become: true
+  vars:
+    cowsay_package_name: cowsay
+
+  tasks:
+  - name: install cowsay
+    ansible.builtin.apt:
+      name: "{{ cowsay_package_name }}"
+      state: present
+      update_cache: true
